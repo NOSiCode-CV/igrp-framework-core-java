@@ -1,15 +1,18 @@
 package cv.igrp.core.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface QueryBus {
 
-    void handle(Query query);
+    <T> T handle(Query query);
 
-    default void handleAll(List<Query> queries) {
+    default <T> List<T> handleAll(List<Query> queries) {
+        List<T> result = new ArrayList<T>();
         for (Query query : queries) {
-            handle(query);
+            result.add(handle(query));
         }
+        return result;
     }
 
 }

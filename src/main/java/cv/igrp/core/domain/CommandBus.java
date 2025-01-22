@@ -1,15 +1,18 @@
 package cv.igrp.core.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface CommandBus {
 
-    void send(Command command);
+    <T> T send(Command command);
 
-    default void sendAll(List<Command> commands) {
+    default <T> List<T> sendAll(List<Command> commands) {
+        List<T> result = new ArrayList<>();
         for (Command command : commands) {
-            send(command);
+            result.add(send(command));
         }
+        return result;
     }
 
 }
