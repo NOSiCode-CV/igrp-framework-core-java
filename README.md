@@ -27,11 +27,6 @@ Update the `pom.xml` of the project you want to deploy to Nexus by adding the di
     </scm>
 
     <distributionManagement>
-        <!--<repository>
-            <id>igrp</id>
-            <name>IGRP Framework Releases</name>
-            <url>https://sonatype.nosi.cv/repository/igrp-horizon/</url>
-        </repository>-->
         <snapshotRepository>
             <id>igrp-framework</id>
             <name>IGRP Framework Snapshots</name>
