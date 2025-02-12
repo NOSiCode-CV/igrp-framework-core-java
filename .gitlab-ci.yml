@@ -2,6 +2,7 @@ stages:
   - trigger-deploy
 
 trigger-deploy:
+  image: ubuntu
   stage: trigger-deploy
   only:
     - github-release
