@@ -7,7 +7,7 @@ trigger-deploy:
     - github-release
   script:
     - echo "Triggering Maven Deploy Repository..."
-    - curl -X POST "https://git.nosi.cv/api/v4/projects/$GITLAB_DEPLOY_PROJECT_ID/trigger/pipeline" \
+    - curl -X POST "https://git.nosi.cv/api/v4/projects/${GITLAB_DEPLOY_PROJECT_ID}/trigger/pipeline" \
       --form "token=$GITLAB_DEPLOY_TOKEN" \
       --form "ref=deploy" \
-      --form "variables[LIBRARY_NAME]=$CI_PROJECT_NAME"
+      --form "variables[LIBRARY_NAME]=${CI_PROJECT_NAME}"
