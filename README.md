@@ -13,7 +13,7 @@ Update the `pom.xml` of the project you want to deploy to Nexus by adding the di
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>cv.igrp</groupId>
+    <groupId>cv.igrp.framework</groupId>
     <artifactId>core</artifactId>
     <version>{{the version must be here}}</version>
     <packaging>jar</packaging>
@@ -161,7 +161,7 @@ For releases (to be implemented):
 ```xml
 <dependencies>
     <dependency>
-        <groupId>cv.igrp</groupId>
+        <groupId>cv.igrp.framework</groupId>
         <artifactId>core</artifactId>
         <version>{{the version in the registry}}</version>
     </dependency>
