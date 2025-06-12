@@ -5,6 +5,7 @@ import cv.igrp.framework.core.domain.IgrpEnum;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Utility class for working with enums that implement the {@link IgrpEnum} interface.
@@ -20,17 +21,21 @@ public class EnumUtils {
     }
 
     /**
-     * Converts an enum class that implements {@link IgrpEnum} into a list of {@link EnumItem} objects.
+     * Converts the constants of an enum class that implements {@link IgrpEnum} into a list of {@link EnumItem} objects.
      * <p>
-     * Each enum constant is mapped to a DTO containing its code and description.
+     * This is typically used to expose enum values in a format suitable for REST APIs or UI components such as dropdowns.
      *
      * @param enumClazz the enum class to convert
-     * @param <T>       the enum type, which must extend {@link Enum} and implement {@link IgrpEnum}
-     * @return a list of {@link EnumItem} instances representing the enum constants
+     * @param <E>       the enum type that implements {@code IgrpEnum<V>}
+     * @param <V>       the type of the value/code returned by {@code getCode()}
+     * @return a list of {@code EnumItem<V>} containing the value-label pairs from the enum
+     * @throws NullPointerException if {@code enumClazz} is null
      */
-    public static <T extends Enum<T> & IgrpEnum> List<EnumItem> toEnumDto(Class<T> enumClazz) {
+    public static <E extends Enum<E> & IgrpEnum<V>, V> List<EnumItem<V>> mapEnumToItems(Class<E> enumClazz) {
+        Objects.requireNonNull(enumClazz, "enumClazz must not be null");
         return Arrays.stream(enumClazz.getEnumConstants())
-                .map(e -> new EnumItem(e.getCode(), e.getDescription()))
+                .map(e -> new EnumItem<>(e.getCode(), e.getDescription()))
                 .toList();
     }
 }
+

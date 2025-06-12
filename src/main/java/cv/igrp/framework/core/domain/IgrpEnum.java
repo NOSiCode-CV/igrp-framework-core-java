@@ -1,8 +1,8 @@
 package cv.igrp.framework.core.domain;
 
-public interface IgrpEnum {
+public interface IgrpEnum<T> {
 
-    String getCode();
+    T getCode();
 
     String getDescription();
 }
